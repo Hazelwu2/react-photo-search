@@ -5,6 +5,7 @@ import SearchPhotos from '@/components/SearchPhotos'
 import CardList from '@/components/CardList'
 import axios from 'axios'
 import { searchPhotoAPI } from '@/utils/api'
+import { motion } from "framer-motion"
 
 function App() {
   const [list, setList] = useState([])
@@ -55,9 +56,15 @@ function App() {
         {isLoading ? (
           <div>載入中...</div>
         ) : (
-          <CardList
-            list={list}
-          />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <CardList
+              list={list}
+            />
+          </motion.div>
         )}
 
       </div>
